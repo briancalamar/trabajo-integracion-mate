@@ -1,5 +1,5 @@
 def decimalABinario ():
-
+    
     while True:
         cadenaNumero = input("Ingresa un número entero y positivo: ")
         try:
