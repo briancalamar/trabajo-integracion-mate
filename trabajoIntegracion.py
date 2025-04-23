@@ -1,10 +1,15 @@
 def decimalABinario ():
-    cadenaNumero = input("Ingrese un número entero: ")
-
-    while cadenaNumero == '':
-        cadenaNumero = input("Por favor, debe ingresar un numero: ")
-
-    numero = int(cadenaNumero)
+    
+    while True:
+        cadenaNumero = input("Ingresa un número entero y positivo: ")
+        try:
+            numero = int(cadenaNumero)
+            if numero <= 0:
+                print("Debe ingresar un número positivo.")
+                continue
+            break
+        except ValueError:
+            print(f"Ingresaste un valor que no es valido: {cadenaNumero}.")
 
     binario = ''
     numeroADividir = numero
