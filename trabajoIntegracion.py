@@ -1,10 +1,15 @@
 def decimalABinario ():
-    cadenaNumero = input("Ingrese un número entero: ")
-
-    while cadenaNumero == '':
-        cadenaNumero = input("Por favor, debe ingresar un numero: ")
-
-    numero = int(cadenaNumero)
+    
+    while True:
+        cadenaNumero = input("Ingresa un número entero y positivo: ")
+        try:
+            numero = int(cadenaNumero)
+            if numero <= 0:
+                print("Debe ingresar un número positivo.")
+                continue
+            break
+        except ValueError:
+            print(f"Ingresaste un valor que no es valido: {cadenaNumero}.")
 
     binario = ''
     numeroADividir = numero
@@ -44,22 +49,38 @@ def binarioADecimal ():
     while esUnBinario:
         cadenaNumero = input("Por favor, ingrese un número binario valido ( debe contener 0 o 1 ): ")
         esUnBinario = esBinario(cadenaNumero)
+
+    numeroAEvaluar = int(cadenaNumero)
+    potencia = 0
+    decimal = 0
     
-    largoCadena = len(cadenaNumero)
-    print(f'largocadena: {largoCadena}')
+    while numeroAEvaluar >= 1:
+        digito = numeroAEvaluar % 10
+        numeroAEvaluar = numeroAEvaluar // 10
+        valorDecimalDelDigito = digito * (2 ** potencia)
+        decimal += valorDecimalDelDigito
+        potencia += 1
 
-    for i in range(largoCadena, -1, -1):
-        print(f'i: {i}')
-        print(f'type: {type(cadenaNumero)}')
-        digitoAEvaluar = cadenaNumero[i]
-        print(f'DigitoAEvaluar: {digitoAEvaluar}')
-        potencia = largoCadena - i
-        valor = digitoAEvaluar * 2 ** potencia
-        print(f'valor: {valor}')
-        print(f'potencia: {potencia}')
+def calculadoraDeDecimalYBinarios ():
+    opcion = ''
 
-binarioADecimal()
+    print('Bienvenido, por favor seleccione una opcion (Ingrese uno de los siguientes numeros)')
 
-'''
-decimalABinario()
-'''
+    while opcion == '':
+        print('\n')
+        print('1. Calculadora de decimal a binario')
+        print('2. Calculadora de binario a decimal')
+        print('3. Salir')
+
+        opcion = input('Ingrese la opcion elegida: ')
+
+        if opcion == '1':
+            decimalABinario()
+        elif opcion == '2':
+            binarioADecimal()
+        elif opcion == '3':
+            continue
+        opcion = ''
+
+
+calculadoraDeDecimalYBinarios()
