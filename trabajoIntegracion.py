@@ -41,17 +41,25 @@ def binarioADecimal ():
     esUnBinario = esBinario(cadenaNumero)
 
     # En caso no sea binario, se genera un bucle hasta que el usuario ingrese un numero binario valido
-    while not esUnBinario:
+    while esUnBinario:
         cadenaNumero = input("Por favor, ingrese un número binario valido ( debe contener 0 o 1 ): ")
         esUnBinario = esBinario(cadenaNumero)
     
-    
+    largoCadena = len(cadenaNumero)
+    print(f'largocadena: {largoCadena}')
 
+    for i in range(largoCadena, -1, -1):
+        print(f'i: {i}')
+        print(f'type: {type(cadenaNumero)}')
+        digitoAEvaluar = cadenaNumero[i]
+        print(f'DigitoAEvaluar: {digitoAEvaluar}')
+        potencia = largoCadena - i
+        valor = digitoAEvaluar * 2 ** potencia
+        print(f'valor: {valor}')
+        print(f'potencia: {potencia}')
 
+binarioADecimal()
 
-    
-
-
-
+'''
 decimalABinario()
-     
+'''
